@@ -1,8 +1,8 @@
-.App{
+.App {
   text-align: center;
 }
 
-.box{
+.box {
   max-width: 200px;
   margin: 50px auto;
   border-radius: 5px;
@@ -10,30 +10,30 @@
   padding: 10px;
 }
 
-p{
+p {
   margin-top: 20px;
   font-size: 24px;
   text-align: center;
 }
 
-button{
+button {
   padding: 10px;
   margin: 20px 10px;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   border: 0px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button.add{
-  background-color: #18978F;
+button.add {
+  background-color: #18978f;
 }
 
-button.sub{
-  background-color: #EB4747;
+button.sub {
+  background-color: #eb4747;
 }
 
-button.reset{
-  background-color: #0F3460;
+button.reset {
+  background-color: #0f3460;
 }
