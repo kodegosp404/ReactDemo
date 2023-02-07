@@ -2,38 +2,41 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [tasks, setTasks] = useState([
+    { id: 1010, name: "Record React lectures", completed: true },
+    { id: 2573, name: "Edit React lectures", completed: true },
+    { id: 3585, name: "Watch Lectures", completed: true },
+  ]);
 
-  function handleAdd() {
-    setCount((count) => count + 1);
-    setCount((count) => count + 1);
-    setCount((count) => count + 1);
+  const [show, setShow] = useState(true);
+
+  function handleDelete(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
   }
-
-  function handleSub() {
-    setCount(count - 2);
-  }
-
-  function handleReset() {
-    setCount(0);
-  }
-
   return (
     <div className="App">
-      <div className="box">
-        <p>{count}</p>
-        <button onClick={handleAdd} className="add">
-          ADD
+      <h1>Task List</h1>
+      <p></p>
+      <ul>
+        <button className="trigger" onClick={() => setShow(!show)}>
+          Toggle
         </button>
-        <button onClick={handleSub} className="sub">
-          SUB
-        </button>
-        <button onClick={handleReset} className="reset">
-          RESET
-        </button>
-      </div>
+        {show &&
+          tasks.map((task) => (
+            <li
+              key={task.id}
+              className={task.completed ? "completed" : "incomplete"}
+            >
+              <span>
+                {task.id} - {task.name}
+              </span>
+              <button onClick={() => handleDelete(task.id)} className="delete">
+                Delete
+              </button>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }
-
 export default App;
