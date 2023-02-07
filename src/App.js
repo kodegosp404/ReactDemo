@@ -4,10 +4,12 @@ import { TaskList } from "./components/TaskList";
 import "./App.css";
 
 function App() {
+  const info = "Prop Drilling";
+
   return (
     <div className="App">
       <Header />
-      <TaskList />
+      <TaskList info={info} />
     </div>
   );
 }
