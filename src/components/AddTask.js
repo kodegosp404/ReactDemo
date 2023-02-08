@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./AddTask.css";
 
 export const AddTask = ({ tasks, setTasks }) => {
-  const [taskValue, setTaskValue] = useState("");
+  // const [taskValue, setTaskValue] = useState("");
   const [progress, setProgress] = useState(false);
+  const taskRef = useRef("");
 
   const handleChange = (event) => {
-    setTaskValue(event.target.value);
+    // setTaskValue(event.target.value);
+    console.log(taskRef.current.value);
   };
   const handleReset = () => {
-    setTaskValue("");
+    // setTaskValue("");
     setProgress(false);
   };
 
@@ -18,7 +20,7 @@ export const AddTask = ({ tasks, setTasks }) => {
     // console.log(typeof Boolean(progress));
     const task = {
       id: Math.floor(Math.random() * 10000),
-      name: taskValue,
+      name: "abc",
       completed: Boolean(progress),
     };
 
@@ -36,7 +38,7 @@ export const AddTask = ({ tasks, setTasks }) => {
           id="task"
           placeholder="Task name"
           autoComplete="off"
-          value={taskValue}
+          ref={taskRef}
         />
 
         <select
@@ -51,7 +53,7 @@ export const AddTask = ({ tasks, setTasks }) => {
           Reset
         </span>
       </form>
-      <p>{taskValue}</p>
+      <p>{taskRef.current.value}</p>
     </section>
   );
 };
