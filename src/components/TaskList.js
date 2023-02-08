@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { TaskCard } from "./TaskCard";
-import { BoxCard } from "./BoxCard";
+import "./TaskList.css";
+import "./AddTask.css";
 
-export const TaskList = ({ info }) => {
-  const [tasks, setTasks] = useState([
-    { id: 1010, name: "Record React lectures", completed: true },
-    { id: 2573, name: "Edit React lectures", completed: true },
-    { id: 3585, name: "Watch Lectures", completed: true },
-  ]);
-
+export const TaskList = ({ tasks, setTasks }) => {
   const [show, setShow] = useState(true);
 
   function handleDelete(id) {
@@ -16,41 +11,19 @@ export const TaskList = ({ info }) => {
   }
 
   return (
-    <>
-      <h1>Task List</h1>
-      <p></p>
+    <section className="tasklist">
       <ul>
-        <button className="trigger" onClick={() => setShow(!show)}>
-          Toggle
-        </button>
+        <div className="header">
+          <h1>TaskList</h1>
+          <button className="trigger" onClick={() => setShow(!show)}>
+            {show ? "Hide Tasks" : "Show Tasks"}
+          </button>
+        </div>
         {show &&
           tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              info={info}
-              task={task}
-              handleDelete={handleDelete}
-            />
+            <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
           ))}
       </ul>
-      <BoxCard result="success">
-        <p className="title">Lorem success</p>
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
-          exercitationem.
-        </p>
-      </BoxCard>
-      <BoxCard result="warning">
-        <p className="title">Lorem Warning</p>
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
-          exercitationem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora
-          officiis assumenda, harum praesentium mollitia exercitationem?
-        </p>
-      </BoxCard>
-    </>
+    </section>
   );
 };
